@@ -21,6 +21,13 @@ spec:
       name: driver-port
     - containerPort: 29015
       name: cluster-port
+    resources:
+      limits:
+        cpu: 100m
+        memory: 256Mi
+      requests:
+        cpu: 100m
+        memory: 256Mi
     volumeMounts:
     - mountPath: /data/rethinkdb_data
       name: rethinkdb-storage
