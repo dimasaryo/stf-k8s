@@ -33,6 +33,13 @@ spec:
         volumeMounts:
         - mountPath: /data/rethinkdb_data
           name: rethinkdb-storage
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
       volumes:
       - name: rethinkdb-storage
         emptyDir: {}
