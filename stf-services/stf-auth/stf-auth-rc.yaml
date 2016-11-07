@@ -16,8 +16,8 @@ spec:
       containers:
       - name: stf-auth
         image: dimasaryoprakoso/stf:latest
-        command:["stf"]
-        args:["auth-google-oauth2", "--port", "3000", "--app-url", "YOUR APP URL HERE" ]
+        command: ["stf"]
+        args: ["auth-google-oauth2", "--port", "3000", "--app-url", "YOUR APP URL HERE" ]
         env:
         - name: SECRET
           value: "YOUR SESSION SECRET HERE"
