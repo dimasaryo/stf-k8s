@@ -17,12 +17,19 @@ spec:
       - name: stf-app
         image: dimasaryoprakoso/stf:latest
         command: ["stf"]
-        args: ["app", "--port", "3000", "--auth-url", "YOUR AUTH URL HERE", "websocket-url", "YOUR WEBSOCKET URL" ]
+        args: 
+          - app
+          - --secret 
+          - "YOUR SECRET HERE" 
+          - --port
+          - "3000"
+          - --auth-url 
+          - "http://stf.example.org/auth/mock/"
+          - --websocket-url
+          - "wss://stf.example.org/"
         env:
         - name: RETHINKDB_PORT_28015_TCP
-          value: "tcp://rethinkdb_proxy_host:port"
-        - name: SECRET
-          value: "YOUR SECRET HERE"
+          value: "tcp://<YOUR RETHINKDB PROXY IP>:28015"
         ports:
         - containerPort: 3000
         resources:
