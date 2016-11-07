@@ -17,7 +17,15 @@ spec:
       - name: stf-triproxy-app
         image: dimasaryoprakoso/stf:latest
         command: ["stf"]
-        args: ["triproxy", "app", "--bind-pub", "tcp://*:7150", "--bind-dealer", "tcp://*:7160", "--bind-pull", "tcp://*:7170" ]
+        args: 
+        - triproxy
+        - "app"
+        - --bind-pub
+        - "tcp://*:7150"
+        - --bind-dealer
+        - "tcp://*:7160"
+        - --bind-pull
+        - "tcp://*:7170"
         ports:
         - containerPort: 7150
           name: bind-pub

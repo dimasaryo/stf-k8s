@@ -17,12 +17,19 @@ spec:
       - name: stf-websocket
         image: dimasaryoprakoso/stf:latest
         command: ["stf"]
-        args: ["websocket", "--storage-url", "http://stf.example.org", "--connect-sub", "tcp://appside.stf.example.org:7150", "--connect-push", "tcp://appside.stf.example.org:7170" ]
+        args: 
+        - websocket
+        - --secret
+        - "YOUR SECRET HERE"
+        - --storage-url
+        - "http://stf.example.org"
+        - --connect-sub
+        - "tcp://appside.stf.example.org:7150"
+        - --connect-push
+        - "tcp://appside.stf.example.org:7170"
         env:
         - name: RETHINKDB_PORT_28015_TCP
-          value: "tcp://rethinkdb_proxy_host:port"
-        - name: SECRET
-          value: "YOUR SECRET HERE"
+          value: "tcp://rethinkdb_proxy_host:28015"
         ports:
         - containerPort: 3000
         resources:

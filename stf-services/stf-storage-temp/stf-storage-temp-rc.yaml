@@ -16,8 +16,13 @@ spec:
       containers:
       - name: stf-storage
         image: dimasaryoprakoso/stf:latest
-        command: ["storage-temp"]
-        args: ["--port", "3000", "--save-dir", "/data"]
+        command: ["stf"]
+        args: 
+        - storage-temp
+        - --port
+        - "3000"
+        - --save-dir
+        - "/data"
         ports:
         - containerPort: 3000
         volumeMounts:

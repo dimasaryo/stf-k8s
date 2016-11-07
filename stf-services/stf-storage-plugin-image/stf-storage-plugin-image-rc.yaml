@@ -17,7 +17,12 @@ spec:
       - name: stf-img-storage
         image: dimasaryoprakoso/stf:latest
         command: ["stf"]
-        args: ["storage-plugin-image", "--port", "3000", "--storage-url", "https://stf.example.org"]
+        args: 
+        - storage-plugin-image
+        - --port
+        - "3000"
+        - --storage-url
+        - "https://stf.example.org"
         ports:
         - containerPort: 3000
         resources:

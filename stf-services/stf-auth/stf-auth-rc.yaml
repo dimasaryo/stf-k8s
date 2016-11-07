@@ -17,23 +17,29 @@ spec:
       - name: stf-auth
         image: dimasaryoprakoso/stf:latest
         command: ["stf"]
-        args: ["auth-google-oauth2", "--port", "3000", "--app-url", "YOUR APP URL HERE" ]
+        args: 
+        - auth-google-oauth2
+        - --secret
+        - "YOUR SECRET HERE"
+        - --port
+        - "3000"
+        - --app-url
+        - "http://stf.example.org/"
         env:
-        - name: SECRET
-          value: "YOUR SESSION SECRET HERE"
         - name: OAUTH_CLIENT_ID
-          value: "CLIENT ID HERE"
+          value: "YOUR OAUTH CLIENT ID"
         - name: OAUTH_CLIENT_SECRET
-          value: "CLIENT SECRET HERE"
+          value: "YOUR OAUTH CLIENT SECRET"
         - name: OAUTH_CALLBACK_URL
-          value: "CALLBACK URL HERE"
+          value: "YOUR OAUTH CALLBACK URL"
         - name: OAUTH_SCOPE
           value: "openid email"
         - name: OAUTH_HD
-          value: "RESTRICTED DOMAIN HERE"
+          value: "YOUR RESTRICTED DOMAIN (OPTIONAL)"
         ports:
         - containerPort: 3000
         resources:
           limits:
             cpu: 100m
-            memory: 256Mi     
+            memory: 256Mi
+

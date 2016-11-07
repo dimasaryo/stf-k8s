@@ -17,12 +17,19 @@ spec:
       - name: stf-api
         image: dimasaryoprakoso/stf:latest
         command: ["stf"]
-        args: ["api", "--port", "3000", "--connect-sub", "tcp://appside.stf.example.org:7150", "--connect-push", "tcp://appside.stf.example.org:7170" ]
+        args: 
+        - api
+        - --secret
+        - "YOUR SECRET HERE"
+        - --port
+        - "3000"
+        - --connect-sub
+        - "tcp://appside.stf.example.org:7150"
+        - --connect-push
+        - "tcp://appside.stf.example.org:7170"
         env:
         - name: RETHINKDB_PORT_28015_TCP
-          value: "tcp://rethinkdb_proxy_host:port"
-        - name: SECRET
-          value: "YOUR SECRET HERE"
+          value: "tcp://rethinkdb_proxy_host:28015"
         ports:
         - containerPort: 3000
         resources:
