@@ -1,0 +1,43 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: stf-auth
+  labels:
+    app: stf-auth
+spec:
+  replicas: 1
+  selector:
+    app: stf-auth
+  template:
+    metadata:
+      labels:
+        app: stf-auth
+    spec:
+      containers:
+      - name: stf-auth
+        image: dimasaryoprakoso/stf:latest
+        command:["stf"]
+        args:["auth-google-oauth2", "--port", "3000", "--app-url", "YOUR APP URL HERE" ]
+        env:
+        - name: SECRET
+          value: "YOUR SESSION SECRET HERE"
+        - name: OAUTH_CLIENT_ID
+          value: "CLIENT ID HERE"
+        - name: OAUTH_CLIENT_SECRET
+          value: "CLIENT SECRET HERE"
+        - name: OAUTH_CALLBACK_URL
+          value: "CALLBACK URL HERE"
+        - name: OAUTH_SCOPE
+          value: "openid email"
+        - name: OAUTH_HD
+          value: "RESTRICTED DOMAIN HERE"
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          requests:
+            cpu: 100m
+            memory: 256Mi
+          
