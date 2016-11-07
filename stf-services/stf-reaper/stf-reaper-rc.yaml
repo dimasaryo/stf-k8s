@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: stf-reaper
+  labels:
+    app: stf-reaper
+spec:
+  replicas: 1
+  selector:
+    app: stf-reaper
+  template:
+    metadata:
+      labels:
+        app: stf-reaper
+    spec:
+      containers:
+      - name: stf-reaper
+        image: dimasaryoprakoso/stf:latest
+        command: ["stf"]
+        args: ["reaperr", "dev", "--connect-push", "tcp://devside.stf.example.org:7270", "--connect-sub", "tcp://appside.stf.example.org:7150", "--heartbeat-timeout", "30000" ]
+        env:
+        - name: RETHINKDB_PORT_28015_TCP
+          value: "tcp://rethinkdb_proxy_host:port"
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          

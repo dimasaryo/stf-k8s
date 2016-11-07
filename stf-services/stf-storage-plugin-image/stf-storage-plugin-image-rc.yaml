@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: stf-img-storage
+  labels:
+    app: stf-img-storage
+spec:
+  replicas: 1
+  selector:
+    app: stf-img-storage
+  template:
+    metadata:
+      labels:
+        app: stf-img-storage
+    spec:
+      containers:
+      - name: stf-img-storage
+        image: dimasaryoprakoso/stf:latest
+        command: ["stf"]
+        args: ["storage-plugin-image", "--port", "3000", "--storage-url", "https://stf.example.org"]
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          

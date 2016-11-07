@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: stf-processor
+  labels:
+    app: stf-processor
+spec:
+  replicas: 1
+  selector:
+    app: stf-processor
+  template:
+    metadata:
+      labels:
+        app: stf-processor
+    spec:
+      containers:
+      - name: stf-processor
+        image: dimasaryoprakoso/stf:latest
+        command: ["stf"]
+        args: ["processor", "stf-processor", "--connect-app-dealer", "tcp://appside.stf.example.org:7160", "--connect-dev-dealer", "tcp://devside.stf.example.org:7260" ]
+        env:
+        - name: RETHINKDB_PORT_28015_TCP
+          value: "tcp://rethinkdb_proxy_host:port"
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          

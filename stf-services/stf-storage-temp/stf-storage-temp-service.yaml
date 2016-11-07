@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: stf-storage
+  name: stf-storage
+spec:
+  ports:
+   - port: 3500
+     targetPort: 3000
+  selector:
+    app: stf-storage

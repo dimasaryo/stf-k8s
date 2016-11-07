@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: stf-apk-storage
+  name: stf-apk-storage
+spec:
+  ports:
+   - port: 3300
+     targetPort: 3000
+  selector:
+    app: stf-apk-storage

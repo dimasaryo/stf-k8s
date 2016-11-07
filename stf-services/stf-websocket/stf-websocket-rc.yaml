@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: stf-websocket
+  labels:
+    app: stf-websocket
+spec:
+  replicas: 1
+  selector:
+    app: stf-websocket
+  template:
+    metadata:
+      labels:
+        app: stf-websocket
+    spec:
+      containers:
+      - name: stf-websocket
+        image: dimasaryoprakoso/stf:latest
+        command: ["stf"]
+        args: ["websocket", "--storage-url", "http://stf.example.org", "--connect-sub", "tcp://appside.stf.example.org:7150", "--connect-push", "tcp://appside.stf.example.org:7170" ]
+        env:
+        - name: RETHINKDB_PORT_28015_TCP
+          value: "tcp://rethinkdb_proxy_host:port"
+        - name: SECRET
+          value: "YOUR SECRET HERE"
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          

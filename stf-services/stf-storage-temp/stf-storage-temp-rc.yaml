@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: stf-storage
+  labels:
+    app: stf-storage
+spec:
+  replicas: 1
+  selector:
+    app: stf-storage
+  template:
+    metadata:
+      labels:
+        app: stf-storage
+    spec:
+      containers:
+      - name: stf-storage
+        image: dimasaryoprakoso/stf:latest
+        command: ["storage-temp"]
+        args: ["--port", "3000", "--save-dir", "/data"]
+        ports:
+        - containerPort: 3000
+        volumeMounts:
+        - mountPath: /data
+          name: stf-storage
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+      volumes:
+      - name: stf-storage
+        emptyDir: {}

@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: stf-migrate
+  labels:
+    app: stf-migrate
+spec:
+  replicas: 1
+  selector:
+    app: stf-migrate
+  template:
+    metadata:
+      labels:
+        app: stf-migrate
+    spec:
+      containers:
+      - name: stf-migrate
+        image: dimasaryoprakoso/stf:latest
+        command: ["stf"]
+        args: ["migrate"]
+        env:
+        - name: RETHINKDB_PORT_28015_TCP
+          value: "tcp://rethinkdb_proxy_host:port"
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          

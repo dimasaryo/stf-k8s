@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: stf-api
+  labels:
+    app: stf-api
+spec:
+  replicas: 1
+  selector:
+    app: stf-api
+  template:
+    metadata:
+      labels:
+        app: stf-api
+    spec:
+      containers:
+      - name: stf-api
+        image: dimasaryoprakoso/stf:latest
+        command: ["stf"]
+        args: ["api", "--port", "3000", "--connect-sub", "tcp://appside.stf.example.org:7150", "--connect-push", "tcp://appside.stf.example.org:7170" ]
+        env:
+        - name: RETHINKDB_PORT_28015_TCP
+          value: "tcp://rethinkdb_proxy_host:port"
+        - name: SECRET
+          value: "YOUR SECRET HERE"
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          

@@ -1,0 +1,27 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: stf-apk-storage
+  labels:
+    app: stf-apk-storage
+spec:
+  replicas: 1
+  selector:
+    app: stf-apk-storage
+  template:
+    metadata:
+      labels:
+        app: stf-apk-storage
+    spec:
+      containers:
+      - name: stf-apk-storage
+        image: dimasaryoprakoso/stf:latest
+        command: ["stf"]
+        args: ["storage-plugin-apk", "--port", "3000", "--storage-url", "https://stf.example.org"]
+        ports:
+        - containerPort: 3000
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          

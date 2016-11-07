@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: stf-triproxy-app
+  labels:
+    app: stf-triproxy-app
+spec:
+  replicas: 1
+  selector:
+    app: stf-triproxy-app
+  template:
+    metadata:
+      labels:
+        app: stf-triproxy-app
+    spec:
+      containers:
+      - name: stf-triproxy-app
+        image: dimasaryoprakoso/stf:latest
+        command: ["stf"]
+        args: ["triproxy", "app", "--bind-pub", "tcp://*:7150", "--bind-dealer", "tcp://*:7160", "--bind-pull", "tcp://*:7170" ]
+        ports:
+        - containerPort: 7150
+          name: bind-pub
+        - containerPort: 7160
+          name: bind-dealer
+        - containerPort: 7170
+          name: bind-pull
+        resources:
+          limits:
+            cpu: 100m
+            memory: 256Mi
+          

@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: stf-websocket
+  name: stf-websocket
+spec:
+  ports:
+   - port: 3600
+     targetPort: 3000
+  selector:
+    app: stf-websocket
