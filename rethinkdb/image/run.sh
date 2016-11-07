@@ -1,3 +1,5 @@
+#!/bin/bash
+
 set -o pipefail
 
 echo Checking for other nodes
