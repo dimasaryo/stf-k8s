@@ -23,7 +23,7 @@ spec:
         - --connect-app-dealer
         - "tcp://appside.stf.example.org:7160"
         - --connect-dev-dealer
-        - "tcp://devside.stf.example.org:7260" ]
+        - "tcp://devside.stf.example.org:7260"
         env:
         - name: RETHINKDB_PORT_28015_TCP
           value: "tcp://rethinkdb_proxy_host:28015"
