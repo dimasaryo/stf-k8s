@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    app: stf-nginx
+  name: stf-nginx
+spec:
+  ports:
+  - port: 80
+    targetPort: 80
+  type: LoadBalancer
+  selector:
+    app: stf-nginx

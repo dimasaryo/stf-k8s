@@ -8,9 +8,12 @@ spec:
   ports:
    - port: 7250
      targetPort: 7250
+     name: bind-pub
    - port: 7260
      targetPort: 7260
+     name: bind-dealer
    - port: 7270
      targetPort: 7270
+     name: bind-pull
   selector:
     app: stf-triproxy-dev
