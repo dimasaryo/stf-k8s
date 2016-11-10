@@ -21,6 +21,8 @@ spec:
         - websocket
         - --secret
         - "YOUR SECRET HERE"
+        - --port
+        - "3000"
         - --storage-url
         - "http://stf.example.org"
         - --connect-sub

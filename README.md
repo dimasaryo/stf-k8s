@@ -1,5 +1,14 @@
 This guide contains step-by-step how to deploy openSTF to minikube. Deploy to google/aws hosted kubernetes should be similar.
 
+#### RethinkDB
+
+```
+$kubectl create -f rethinkdb/driver-service.yaml
+$kubectl create -f rethinkdb/rc.yaml
+$kubectl create -f rethinkdb/admin-pod.yaml
+$kubectl create -f rethinkdb/admin-service.yaml
+```
+
 
 #### RethinkDB Proxy
 
