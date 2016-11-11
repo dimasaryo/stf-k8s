@@ -15,5 +15,6 @@ spec:
    - port: 7270
      targetPort: 7270
      name: bind-pull
+  type: LoadBalancer
   selector:
     app: stf-triproxy-dev
