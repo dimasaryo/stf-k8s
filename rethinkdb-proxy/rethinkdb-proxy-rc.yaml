@@ -18,7 +18,7 @@ spec:
         image: openstf/ambassador:latest
         env:
         - name: RETHINKDB_PORT_28015_TCP
-          value: "tcp://<rethinkdb-host>:28015"
+          value: "tcp://rethinkdb-driver:28015"
         ports:
         - containerPort: 28015
         resources:

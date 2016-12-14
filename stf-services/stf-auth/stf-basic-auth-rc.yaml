@@ -1,39 +1,33 @@
 apiVersion: v1
 kind: ReplicationController
 metadata:
-  name: stf-api
+  name: stf-auth
   labels:
-    app: stf-api
+    app: stf-auth
 spec:
   replicas: 1
   selector:
-    app: stf-api
+    app: stf-auth
   template:
     metadata:
       labels:
-        app: stf-api
+        app: stf-auth
     spec:
       containers:
-      - name: stf-api
+      - name: stf-auth
         image: dimasaryoprakoso/stf:latest
         command: ["stf"]
         args: 
-        - api
+        - auth-mock
         - --secret
         - "YOUR SECRET HERE"
         - --port
         - "3000"
-        - --connect-sub
-        - "tcp://stf-triproxy-app:7150"
-        - --connect-push
-        - "tcp://stf-triproxy-app:7170"
-        env:
-        - name: RETHINKDB_PORT_28015_TCP
-          value: "tcp://rethinkdb-proxy:28015"
+        - --app-url
+        - "http://stf.example.org/"
         ports:
         - containerPort: 3000
         resources:
           limits:
             cpu: 100m
             memory: 256Mi
-          

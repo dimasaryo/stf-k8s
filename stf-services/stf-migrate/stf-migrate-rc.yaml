@@ -20,7 +20,7 @@ spec:
         args: ["migrate"]
         env:
         - name: RETHINKDB_PORT_28015_TCP
-          value: "tcp://rethinkdb_proxy_host:port"
+          value: "tcp://rethinkdb-proxy:28015"
         resources:
           limits:
             cpu: 100m

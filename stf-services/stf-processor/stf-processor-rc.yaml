@@ -21,12 +21,12 @@ spec:
         - processor
         - "stf-processor"
         - --connect-app-dealer
-        - "tcp://appside.stf.example.org:7160"
+        - "tcp://stf-triproxy-app:7160"
         - --connect-dev-dealer
-        - "tcp://devside.stf.example.org:7260"
+        - "tcp://stf-triproxy-dev:7260"
         env:
         - name: RETHINKDB_PORT_28015_TCP
-          value: "tcp://rethinkdb_proxy_host:28015"
+          value: "tcp://rethinkdb-proxy:28015"
         resources:
           limits:
             cpu: 100m

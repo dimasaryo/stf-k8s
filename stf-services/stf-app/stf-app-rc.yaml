@@ -29,7 +29,7 @@ spec:
           - "wss://stf.example.org/"
         env:
         - name: RETHINKDB_PORT_28015_TCP
-          value: "tcp://<YOUR RETHINKDB PROXY IP>:28015"
+          value: "tcp://rethinkdb-proxy:28015"
         ports:
         - containerPort: 3000
         resources:

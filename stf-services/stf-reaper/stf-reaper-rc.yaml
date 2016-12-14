@@ -21,14 +21,14 @@ spec:
         - reaper
         - "dev"
         - --connect-push
-        - "tcp://devside.stf.example.org:7270"
+        - "tcp://stf-triproxy-dev:7270"
         - --connect-sub
-        - "tcp://appside.stf.example.org:7150"
+        - "tcp://stf-triproxy-app:7150"
         - --heartbeat-timeout
         -  "30000"
         env:
         - name: RETHINKDB_PORT_28015_TCP
-          value: "tcp://rethinkdb_proxy_host:28015"
+          value: "tcp://rethinkdb-proxy:28015"
         resources:
           limits:
             cpu: 100m
