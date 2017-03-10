@@ -42,7 +42,7 @@ $ kubectl get pod -l app=rethinkdb-proxy
 NAME                    READY     STATUS    RESTARTS   AGE
 rethinkdb-proxy-tqljl   1/1       Running   0          1m
 
-$ kubectl get service -l app=rethinkdb-proxy
+$ kubectl get service rethinkdb-proxy
 NAME              CLUSTER-IP     EXTERNAL-IP   PORT(S)     AGE
 rethinkdb-proxy   x.x.x.x        <none>        28015/TCP   1m
 ```
